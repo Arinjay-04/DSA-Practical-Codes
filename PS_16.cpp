@@ -1,12 +1,13 @@
 // Consider telephone book database of N clients. Make use of a hash table implementation
 // to quickly look up client‘s telephone number. Make use of two collision handling
 // techniques and compare them using number of comparisons required to find a set of
-// telephone numbers (Note: Use linear probing with replacement and without
-// replacement). Perform following operations
-// 1) Insert
-// 2) Display
-// 3) Search (number of comparisons required to search)
-// Use Hash function as H(x) = (3*x + 5)%10
+// telephone numbers (Note: Use linear probing with replacement and without replacement).
+// Perform following operations
+// 1. Insert
+// 2. Delete
+// 3. Search
+// 4. Display
+
 
 
 #include <bits/stdc++.h>
@@ -87,7 +88,24 @@ class Hashing{
         return "key Not Found";
     }
 
-    
+    void Delete( string name, string tele , int &count ){
+        int index = hash_func(tele);
+        int orig = index;
+        while(client[index] != NULL){
+               if(client[index]->name == name && client[index]->isActive ){
+                      client[index]->isActive = false;
+                      return;
+               }
+            
+               index = (index + 1)%10;
+               if(index == orig){
+                 break;
+               }
+        }
+
+        cout<<"key Not Found"<<endl;
+    }
+
 
      void Display() {
         for (int i = 0; i < client.size(); i++) {
