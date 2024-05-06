@@ -115,7 +115,7 @@ class TBST{
       cout<<endl;
    }
 
-   int smallest(Node* root){
+   int smallest(){
     Node* p = root;
     while(p->lbit == 1){
         p = p->left;
@@ -124,7 +124,7 @@ class TBST{
     return p->data;
    }
 
-    int largest(Node* root){
+    int largest(){
     Node* p = root;
     while(p->rbit == 1){
         p = p->right;
@@ -149,6 +149,13 @@ int main(){
     tree.insert(10);
 
     tree.Inorder();
+
+
+    int sm = tree.smallest();
+    int lr = tree.largest();
+
+    cout<<sm<<endl;
+    cout<<lr<<endl;
 
 
 return 0;
